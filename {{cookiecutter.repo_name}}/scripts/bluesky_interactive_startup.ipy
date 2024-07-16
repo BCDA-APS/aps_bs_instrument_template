@@ -1,0 +1,36 @@
+'''
+Replacement for ipython profile
+'''
+
+import time
+
+from {{cookiecutter.repo_name}}.utils.iconfig_loader import iconfig
+from {{cookiecutter.repo_name}}.utils.session_logs import logger
+from bluesky.magics import BlueskyMagics
+from IPython import get_ipython
+
+logger.info(__file__)
+
+_ip = get_ipython()
+if _ip is not None:
+    _xmode_level = iconfig.get("XMODE_DEBUG_LEVEL", "Minimal")
+    _ip.register_magics(BlueskyMagics)
+    _ip.run_line_magic("xmode", _xmode_level)
+    logger.info("xmode exception level: '%s'", _xmode_level)
+    del _ip
+
+
+#start timer
+t0 = time.monotonic()
+
+from {{cookiecutter.repo_name}}.initialize_bs_tools import (  # noqa: F401
+    RE,
+    bec,
+    cat,
+    oregistry,
+    peaks,
+    sd,
+)
+from {{cookiecutter.repo_name}}.data_collection import *  # noqa
+
+print(f"Finished initalization in {time.monotonic() - t0:.2f} seconds.")
