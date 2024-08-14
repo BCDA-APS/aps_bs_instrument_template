@@ -1,0 +1,7 @@
+# questions
+beamline_name:
+    type: str
+    help: What is your beamline name?
+catalog_name:
+    type: str
+    help: What is the name of you databroker catalog
