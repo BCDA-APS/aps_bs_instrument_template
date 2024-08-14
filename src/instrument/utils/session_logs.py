@@ -32,8 +32,6 @@ __all__ = [
     "logger",
 ]
 
-# TODO: Fix logger to no longer live in 1 million places. All logging should occur here
-
 # fmt: off
 import logging
 import pathlib
