@@ -1,12 +1,12 @@
 # Configuration for the Bluesky instrument package.
 
-DATABROKER_CATALOG: &databroker_catalog eric_test
+DATABROKER_CATALOG: &databroker_catalog  {{databroker_catalog_name}}
 
 # default RunEngine metadata
 RUNENGINE_METADATA:
-  beamline_id: sim_id
-  instrument_name: Sim-ID-I
-  proposal_id: SimDev
+  beamline_id: sim_id #TODO: What should be the naming convention
+  instrument_name: Sim-ID-I #TODO: What should be the naming convention
+  proposal_id: SimDev #TODO: What should be the naming convention
   databroker_catalog: *databroker_catalog
 
 # Uncomment and edit to define a PV to use for the `scan_id`.
