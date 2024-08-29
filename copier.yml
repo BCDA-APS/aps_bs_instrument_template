@@ -4,4 +4,10 @@ beamline_name:
     help: What is your beamline name?
 databroker_catalog_name:
     type: str
-    help: What is the name of you databroker catalog
+    help: What is the name of you databroker catalog?
+instrument_name:
+    type: str
+    help: What is the instrument name?
+proposal_id:
+    type: str
+    help: What is the proposal id name?

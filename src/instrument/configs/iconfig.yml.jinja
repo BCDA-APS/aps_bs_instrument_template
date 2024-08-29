@@ -4,9 +4,9 @@ DATABROKER_CATALOG: &databroker_catalog  {{databroker_catalog_name}}
 
 # default RunEngine metadata
 RUNENGINE_METADATA:
-  beamline_id: sim_id #TODO: What should be the naming convention
-  instrument_name: Sim-ID-I #TODO: What should be the naming convention
-  proposal_id: SimDev #TODO: What should be the naming convention
+  beamline_id: {{beamline_name}}
+  instrument_name: {{instrument_name}}
+  proposal_id: {{proposal_id}}
   databroker_catalog: *databroker_catalog
 
 # Uncomment and edit to define a PV to use for the `scan_id`.
@@ -16,7 +16,6 @@ RUNENGINE_METADATA:
 # permissions
 ALLOW_AREA_DETECTOR_WARMUP: false
 ENABLE_AREA_DETECTOR_IMAGE_PLUGIN: false
-ENABLE_CALCS: false
 USE_PROGRESS_BAR: false
 WRITE_NEXUS_DATA_FILES: false
 NEXUS_WARN_MISSING_CONTENT: false

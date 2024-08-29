@@ -18,13 +18,12 @@ import numpy
 import ophyd
 import pyRestTable
 import spec2nexus
-from {{ beamline_name }}_bs_instrument.callbacks import *  # noqa
-from {{ beamline_name }}_bs_instrument.devices import *  # noqa
-from {{ beamline_name }}_bs_instrument.plans import *  # noqa
-from {{ beamline_name }}_bs_instrument.utils.catalog import load_catalog
-from {{ beamline_name }}_bs_instrument.utils.epics_tools import set_control_layer
-from {{ beamline_name }}_bs_instrument.utils.iconfig_loader import iconfig
-from {{ beamline_name }}_bs_instrument.utils.run_engine import run_engine
+from {{beamline_name}}_bs_instrument.callbacks import *  # noqa
+from {{ beamline_name }}_bs_instrument.data_collection import *  # noqa
+from {{beamline_name}}_bs_instrument.utils.catalog import load_catalog
+from {{beamline_name}}_bs_instrument.utils.epics_tools import set_control_layer
+from {{beamline_name}}_bs_instrument.utils.iconfig_loader import iconfig
+from {{beamline_name}}_bs_instrument.utils.run_engine import run_engine
 
 # guides choice of module to import cat
 

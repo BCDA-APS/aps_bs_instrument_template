@@ -3,6 +3,8 @@ configure matplotlib for console or notebook session
 MUST be run BEFORE other initializations
 """
 
+from IPython import get_ipython  # noqa
+import matplotlib.pyplot as plt
 
 def isnotebook():  # noqa D103
     try:

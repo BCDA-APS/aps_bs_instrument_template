@@ -2,6 +2,11 @@
 
 # # Start the bluesky queueserver.
 
+# Standard BCDA setup at APS defines this pointing to APSshare.
+# We choose here to get PyEpics from the conda environment.
+unset PYEPICS_LIBCA # TODO: Need to fix this more permenantly
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" # This allows for command to be run from anywhere
+
 #--------------------
 # change the program defaults here
 SCRIPT_DIR=$(dirname $(readlink -f "${0}"))
@@ -14,7 +19,6 @@ export QS_UPDATE_PLANS_DEVICES=ENVIRONMENT_OPEN
 export QS_USER_GROUP_PERMISSIONS_FILE="${SCRIPT_DIR}/../src/instrument/configs/user_group_permissions.yaml" #TODO: De-hardcode
 export QS_EXISTING_PLANS_DEVICES_FILE="${SCRIPT_DIR}/../src/instrument/configs/" #TODO: De-hardcode
 export QS_USER_GROUP_PERMISSIONS_RELOAD=ON_STARTUP
-# export STARTUP_DIR="${SCRIPT_DIR}/../src/instrument/"
 export STARTUP_SCRIPT="${SCRIPT_DIR}/bs_qs_startup.py"
 
 # REDIS_ADDR is __always__ localhost.
@@ -33,6 +37,22 @@ if [ ! -f "${CONDA_EXE}" ]; then
     echo "No 'conda' command available."
     exit 1
 fi
+
+################### TODO: See if needs to be kept
+# In GitHub Actions workflow,
+# # $ENV_NAME is an environment variable naming the conda environment to be used
+# if [ -z "${ENV_NAME}" ] ; then
+#     ENV_NAME="${CONDA_ENVIRONMENT}"
+# fi
+
+# if [ "${CONDA_DEFAULT_ENV}" != "${ENV_NAME}" ]; then
+#     echo "Activating conda environment ${ENV_NAME}"
+#     CONDA_BASE="$(dirname $(dirname $(readlink -f ${CONDA_EXE})))"
+#     source "${CONDA_BASE}/etc/profile.d/conda.sh"
+#     conda activate "${ENV_NAME}"
+# fi
+# echo "conda env list = $(conda env list)"
+###################
 
 # #--------------------
 # echo "Environment: $(env | sort)"

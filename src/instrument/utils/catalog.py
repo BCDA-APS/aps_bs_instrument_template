@@ -3,13 +3,7 @@ Utility that enables bluesky catalog
 """
 
 import logging
-
 import databroker
-
-# from tiled.client import from_uri
-# from tiled.client.cache import Cache
-
-# from ._iconfig import load_config
 
 log = logging.getLogger(__name__)
 

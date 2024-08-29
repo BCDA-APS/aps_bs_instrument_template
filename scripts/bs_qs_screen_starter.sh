@@ -4,6 +4,7 @@
 
 #--------------------
 # change the program defaults here
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )" # This allows for command to be run from anywhere
 
 if [ "${DATABROKER_CATALOG}" == "" ]; then
     SCRIPT_DIR=$(dirname $(readlink -f "${0}"))
@@ -22,9 +23,9 @@ fi
 SELECTION=${1:-usage}
 SESSION_NAME=${2:-"${DEFAULT_SESSION_NAME}"}
 
-PROCESS=run_qs.sh
+PROCESS=_qs_host.sh
 STARTUP_COMMAND="${STARTUP_DIR}/${PROCESS}"
-# _run_qs.sh will check that $(hostname) matches ${REDIS_HOST}
+# qs_host.sh will check that $(hostname) matches ${REDIS_HOST}
 export QS_SERVER_HOST="${REDIS_HOST}"
 # But other management commands will fail if mismatch
 if [ "$(hostname)" != "${QS_SERVER_HOST}" ]; then
